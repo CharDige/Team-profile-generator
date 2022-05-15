@@ -1,8 +1,14 @@
+// npm modules
 const inquirer = require("inquirer");
+const fs = require("fs");
+
+// Created modules
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const fs = require("fs");
 const Manager = require("./lib/Manager");
+const Template = require("./src/template")
+
+
 
 // Begin prompts with asking for manager details
 const createManager = () => {
@@ -92,8 +98,6 @@ const createEmployees = () => {
         } else if (role === "No more employees to add") {
             return console.log("Finished!")
         }
-
-        console.log(theEmployee);
     })
 }
 
