@@ -1,9 +1,8 @@
 const inquirer = require("inquirer");
-//const fs = require("fs");
-//const Employee = require("./lib/Employee");
-//const Manager = require("./lib/Manager");
-//const Engineer = require("./lib/Engineer");
-//const Intern = require("./lib/Intern");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const fs = require("fs");
+const Manager = require("./lib/Manager");
 
 // Begin prompts with asking for manager details
 const createManager = () => {
@@ -31,14 +30,11 @@ const createManager = () => {
             }
         ])
     .then((managerData) => {
-        const managerAnswers = {
-            name: managerData.name,
-            id: managerData.id,
-            email: managerData.email,
-            officeNumber: managerData.officeNumber,
-        }
+        const { name, id, email, officeNumber } = managerData;
 
-        console.log(managerAnswers);
+        const theManager = new Manager(name, id, email, officeNumber);
+
+        console.log(theManager);
     })
 }
 
@@ -81,19 +77,26 @@ const createEmployees = () => {
             }
         ])
     .then((employeesData) => {
-        const employeesAnswers = {
-            role: employeesData.role,
-            name: employeesData.name,
-            id: employeesData.id,
-            email: employeesData.email,
-            github: employeesData.github,
-            school: employeesData.school,
+        const { role, name, id, email, github, school } = employeesData;
+
+        let theEmployee;
+
+        if (role === "Engineer") {
+            theEmployee = new Engineer(name, id, email, github);
+
+            console.log(theEmployee);
+        } else if (role === "Intern") {
+            theEmployee = new Intern(name, id, email, school);
+
+            console.log(theEmployee);
+        } else if (role === "No more employees to add") {
+            return console.log("Finished!")
         }
 
-        console.log(employeesData);
+        console.log(theEmployee);
     })
 }
 
-// createManager();
 
-createEmployees();
+createManager()
+    .then(createEmployees);
