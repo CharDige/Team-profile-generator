@@ -7,7 +7,7 @@ const createTeam = (employees) => {
                     <div class="card">
                         <div class="card-body">
                             <h2 class="card-title">
-                                ${manager.role}
+                                ${manager.getRole()}
                             </h2>
                             <p class="card-text">
                                 <i class="bi bi-emoji-sunglasses-fill"></i>
@@ -38,7 +38,7 @@ const createTeam = (employees) => {
                     <div class="card">
                         <div class="card-body">
                             <h2 class="card-title">
-                                ${engineer.role}
+                                ${engineer.getRole()}
                             </h2>
                             <p class="card-text">
                                 <i class="bi bi-emoji-laughing-fill"></i>
@@ -69,7 +69,7 @@ const createTeam = (employees) => {
                     <div class="card">
                         <div class="card-body">
                             <h2 class="card-title">
-                                ${intern.role}
+                                ${intern.getRole()}
                             </h2>
                             <p class="card-text">
                                 <i class="bi bi-emoji-smile-fill"></i>
