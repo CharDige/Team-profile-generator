@@ -55,8 +55,8 @@ const createEmployees = () => {
             {
                 type: "list",
                 name: "role",
-                message: "Would you like to add an employee?",
-                choices: ["Engineer", "Intern", "No more employees to add"],
+                message: "What kind of employee would you like the add?",
+                choices: ["Engineer", "Intern"],
             },
             {
                 type: "input",
@@ -84,10 +84,16 @@ const createEmployees = () => {
                 name: "school",
                 message: "What school did this intern go to?",
                 when: (answers) => answers.role === "Intern",
+            },
+            {
+                type: "confirm",
+                name: "moreEmployees",
+                message: "Are there anymore employees to add?",
+                default: false,
             }
         ])
     .then((employeesData) => {
-        let { role, name, id, email, github, school } = employeesData;
+        let { role, name, id, email, github, school, moreEmployees } = employeesData;
 
         let theEmployee;
 
@@ -101,9 +107,8 @@ const createEmployees = () => {
             employees.push(theEmployee);
         }
 
-        if (role === "No more employees to add") {
+        if (!moreEmployees) {
             return writeHTML(employees);
-
         } else {
             return createEmployees(employees);
         }
