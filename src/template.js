@@ -1,6 +1,8 @@
-// Create Manager card using template literals
-const createManagerCard = (manager) => {
-    return `
+// Creating the team
+const createTeam = (employees) => {
+    // Create Manager card using template literals
+    const createManagerCard = (manager) => {
+        return `
                 <div class="col-12 col-md-4">
                     <div class="card">
                         <div class="card-body">
@@ -27,11 +29,11 @@ const createManagerCard = (manager) => {
                         </div>
                     </div>
                 </div>`
-}
+    }
 
-// Create Engineer card using template literals
-const createEngineerCard = (engineer) => {
-    return `
+    // Create Engineer card using template literals
+    const createEngineerCard = (engineer) => {
+        return `
                 <div class="col-12 col-md-4">
                     <div class="card">
                         <div class="card-body">
@@ -58,11 +60,11 @@ const createEngineerCard = (engineer) => {
                         </div>
                     </div>
                 </div>`
-}
+    }
 
-// Create Intern card using template literals
-const createInternCard = (intern) => {
-    return `
+    // Create Intern card using template literals
+    const createInternCard = (intern) => {
+        return `
                 <div class="col-12 col-md-4">
                     <div class="card">
                         <div class="card-body">
@@ -89,7 +91,39 @@ const createInternCard = (intern) => {
                         </div>
                     </div>
                 </div>`
-}
+    }
+
+    // Empty array to hold each card as they're generated
+    const cards = [];
+
+    // Push manager card into cards array
+    cards.push(employees
+        // Filter for only 'Manager'
+        .filter(employee => employee.getRole() === "Manager")
+        // Create new array to create manager card with manager details using .map()
+        .map(manager => createManagerCard(manager))
+    );
+
+    // Push engineer card into cards array
+    cards.push(employees
+        // Filter for only "Engineer"
+        .filter(employee => employee.getRole() === "Engineer")
+        // Create new array to create engineer card with engineer deatils using .map()
+        .map(engineer => createEngineerCard(engineer))
+    );
+
+    // Push intern card into cards array
+    cards.push(employees
+        // Filter for only "Intern"
+        .filter(employee => employee.getRole() === "Intern")
+        // Create a new array to create intern card with intern details using .map()
+        .map(intern => createInternCard(intern))
+    );
+
+    // Return the cards array as a string
+    return cards.join("");
+} 
 
 
-module.exports = Template;
+
+module.exports = createTeam;
