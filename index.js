@@ -6,14 +6,14 @@ const fs = require("fs");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-// const Template = require("./src/template")
+const createTeam = require("./src/template");
 
 // Empty employees array to populate
 const employees = [];
 
 
 // Begin prompts with asking for manager details
-const createManager = () => {
+const beginPrompts = () => {
     return inquirer
         .prompt([
             {
@@ -43,6 +43,8 @@ const createManager = () => {
         const theManager = new Manager(name, id, email, officeNumber);
 
         employees.push(theManager);
+
+        createEmployees();
     })
 }
 
@@ -93,20 +95,26 @@ const createEmployees = () => {
             theEmployee = new Engineer(name, id, email, github);
 
             employees.push(theEmployee);
-
-            createEmployees(employees);
         } else if (role === "Intern") {
             theEmployee = new Intern(name, id, email, school);
 
             employees.push(theEmployee);
+        }
 
-            createEmployees(employees);
-        } else if (role === "No more employees to add") {
-            return console.log(employees)
+        if (role === "No more employees to add") {
+            return writeHTML(employees);
+
+        } else {
+            return createEmployees(employees);
         }
     })
 }
 
+// Write the index.html file
+const writeHTML = (employees) => {
+    fs.writeFile("./dist/index.html", createTeam(employees), (err) =>
+    err ? console.log(err) : console.log("Team profiles page created!"))
+}
 
-createManager()
-    .then(createEmployees);
+// Initiate prompts and create HTML from inputs
+beginPrompts()
