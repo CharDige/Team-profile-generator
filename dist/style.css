@@ -20,17 +20,19 @@ header {
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 60px;
     color: var(--white-font);
 }
 
 h2 {
-    font-size: 40px;
+    font-size: 35px;
     color: var(--white-font);
+    font-family: var(--heading-font-family);
 }
 
 li {
-    font-size: 20px;
+    font-size: 25px;
+    font-family: var(--main-font-family);
 }
 
 a {
@@ -43,10 +45,6 @@ a:hover {
 }
 
 /* Class selector styling */
-.container {
-    margin-top: 20px;
-}
-
 .card-body {
     background-color: var(--card-header-colour);
     border: 2px solid var(--card-border);
@@ -73,4 +71,5 @@ a:hover {
 
 .card {
     box-shadow: 5px 5px 15px var(--shadow);
+    margin-top: 20px;
 }
