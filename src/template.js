@@ -90,3 +90,6 @@ const createInternCard = (intern) => {
                     </div>
                 </div>`
 }
+
+
+module.exports = Template;
