@@ -6,8 +6,10 @@ const fs = require("fs");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const Template = require("./src/template")
+// const Template = require("./src/template")
 
+// Empty employees array to populate
+const employees = [];
 
 
 // Begin prompts with asking for manager details
@@ -40,7 +42,7 @@ const createManager = () => {
 
         const theManager = new Manager(name, id, email, officeNumber);
 
-        console.log(theManager);
+        employees.push(theManager);
     })
 }
 
@@ -83,20 +85,24 @@ const createEmployees = () => {
             }
         ])
     .then((employeesData) => {
-        const { role, name, id, email, github, school } = employeesData;
+        let { role, name, id, email, github, school } = employeesData;
 
         let theEmployee;
 
         if (role === "Engineer") {
             theEmployee = new Engineer(name, id, email, github);
 
-            console.log(theEmployee);
+            employees.push(theEmployee);
+
+            createEmployees(employees);
         } else if (role === "Intern") {
             theEmployee = new Intern(name, id, email, school);
 
-            console.log(theEmployee);
+            employees.push(theEmployee);
+
+            createEmployees(employees);
         } else if (role === "No more employees to add") {
-            return console.log("Finished!")
+            return console.log(employees)
         }
     })
 }
