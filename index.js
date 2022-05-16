@@ -34,7 +34,8 @@ const beginPrompts = () => {
                 message: "What is your ID?",
                 validate: function(input) {
                     if(isNaN(input)) {
-                        console.log("ID must be a number");
+                        console.log("Provide a number")
+                        return false;
                     } else if (!input) {
                         console.log("Please provide your ID number")
                     } else {
@@ -52,7 +53,7 @@ const beginPrompts = () => {
                     if (valid) {
                         return true;
                     } else {
-                        console.log("Please enter an email address");
+                        console.log("Please enter your email address");
                         return false;
                     }
                 }
@@ -97,28 +98,68 @@ const createEmployees = () => {
                 type: "input",
                 name: "name",
                 message: "What is this employee's name?",
+                validate: function(input) {
+                    if (!input) {
+                        console.log("Please provide your employee's name");
+                    } else {
+                        return true;
+                    }
+                }
             },
             {
                 type: "input",
                 name: "id",
                 message: "What is this employee's ID?",
+                validate: function(input) {
+                    if(isNaN(input)) {
+                        return "ID must be a number";
+                    } else if (!input) {
+                        return "Please provide your employee's ID number";
+                    } else {
+                        return true;
+                    }
+                }
             },
             {
                 type: "input",
                 name: "email",
                 message: "Enter employee's email address",
+                validate: function(input) {
+                    valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)
+
+                    if (valid) {
+                        return true;
+                    } else {
+                        console.log("Please enter your employee's email address");
+                        return false;
+                    }
+                }
             },
             {
                 type: "input",
                 name: "github",
                 message: "Enter this Engineer's GitHub username",
                 when: (answers) => answers.role === "Engineer",
+                validate: function(input) {
+                    if (!input) {
+                        console.log("Please provide the Engineer's GitHub username");
+                    } else {
+                        return true;
+                    }
+                }
             },
             {
                 type: "input",
                 name: "school",
                 message: "What school did this intern go to?",
                 when: (answers) => answers.role === "Intern",
+                validate: function(input) {
+                    if (!input) {
+                        console.log("Please provide the name of the school your Intern went to");
+                    } else {
+                        return true;
+                    }
+                }
             },
             {
                 type: "confirm",
