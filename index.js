@@ -20,6 +20,13 @@ const beginPrompts = () => {
                 type:"input",
                 name: "name",
                 message: "What is your name?",
+                validate: (input) => {
+                    if (!input) {
+                        console.log("Please provide your name");
+                    } else {
+                        return true;
+                    }
+                }
             },
             {
                 type: "input",
