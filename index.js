@@ -20,7 +20,7 @@ const beginPrompts = () => {
                 type:"input",
                 name: "name",
                 message: "What is your name?",
-                validate: (input) => {
+                validate: function(input) {
                     if (!input) {
                         console.log("Please provide your name");
                     } else {
@@ -32,16 +32,44 @@ const beginPrompts = () => {
                 type: "input",
                 name: "id",
                 message: "What is your ID?",
+                validate: function(input) {
+                    if(isNaN(input)) {
+                        console.log("ID must be a number");
+                    } else if (!input) {
+                        console.log("Please provide your ID number")
+                    } else {
+                        return true;
+                    }
+                }
             },
             {
                 type: "input",
                 name: "email",
                 message: "Enter your email address",
+                validate: function(input) {
+                    valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)
+
+                    if (valid) {
+                        return true;
+                    } else {
+                        console.log("Please enter an email address");
+                        return false;
+                    }
+                }
             },
             {
                 type: "input",
                 name: "officeNumber",
                 message: "What is your office number?",
+                validate: function(input) {
+                    if(isNaN(input)) {
+                        console.log("ID must be a number");
+                    } else if (!input) {
+                        console.log("Please provide your ID number")
+                    } else {
+                        return true;
+                    }
+                }
             }
         ])
     .then((managerData) => {
