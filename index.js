@@ -32,12 +32,16 @@ const beginPrompts = () => {
                 type: "input",
                 name: "id",
                 message: "What is your ID?",
+                filter: (input) => {
+                    if (isNaN(input)) return '';
+                    return input;
+                },
                 validate: function(input) {
-                    if(isNaN(input)) {
-                        console.log("Provide a number")
+                    if(isNaN(input) || input === '') {
+                        console.log(". ID must be a number")
                         return false;
                     } else if (!input) {
-                        console.log("Please provide your ID number")
+                        console.log(". Please provide your ID number")
                     } else {
                         return true;
                     }
@@ -47,14 +51,19 @@ const beginPrompts = () => {
                 type: "input",
                 name: "email",
                 message: "Enter your email address",
+                filter: (input) => {
+                    valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)
+                    if(!valid) return '';
+                    return input;
+                },
                 validate: function(input) {
                     valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)
 
-                    if (valid) {
-                        return true;
-                    } else {
-                        console.log("Please enter your email address");
+                    if (!valid || input === '') {
+                        console.log(". Please enter your email address");
                         return false;
+                    } else {
+                        return true;
                     }
                 }
             },
@@ -62,11 +71,15 @@ const beginPrompts = () => {
                 type: "input",
                 name: "officeNumber",
                 message: "What is your office number?",
+                filter: (input) => {
+                    if (isNaN(input)) return '';
+                    return input;
+                },
                 validate: function(input) {
-                    if(isNaN(input)) {
-                        console.log("ID must be a number");
-                    } else if (!input) {
-                        console.log("Please provide your ID number")
+                    if(isNaN(input) || input === '') {
+                        console.log(". Office number must be a number");
+                    } else if (!input || input === '') {
+                        console.log(". Please provide your ID number")
                     } else {
                         return true;
                     }
@@ -110,11 +123,16 @@ const createEmployees = () => {
                 type: "input",
                 name: "id",
                 message: "What is this employee's ID?",
+                filter: (input) => {
+                    if (isNaN(input)) return '';
+                    return input;
+                },
                 validate: function(input) {
-                    if(isNaN(input)) {
-                        return "ID must be a number";
+                    if(isNaN(input) || input === '') {
+                        console.log(". ID must be a number")
+                        return false;
                     } else if (!input) {
-                        return "Please provide your employee's ID number";
+                        console.log(". Please provide your employee's ID number")
                     } else {
                         return true;
                     }
@@ -124,14 +142,19 @@ const createEmployees = () => {
                 type: "input",
                 name: "email",
                 message: "Enter employee's email address",
+                filter: (input) => {
+                    valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)
+                    if(!valid) return '';
+                    return input;
+                },
                 validate: function(input) {
                     valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)
 
-                    if (valid) {
-                        return true;
-                    } else {
-                        console.log("Please enter your employee's email address");
+                    if (!valid || input === '') {
+                        console.log(". Please enter your employee's email address");
                         return false;
+                    } else {
+                        return true;
                     }
                 }
             },
