@@ -83,41 +83,33 @@ To view how this team profile generator works, how it can be used, as well as th
 
 After the installation process has been undertaken, you may want to run the tests first. If so, enter `npm test` in the command-line, which will run several tests that are located in the `/_tests_` folder.
 
-![Command-line with npm test written in it]
-
-![Terminal showing several passed tests]
+![Terminal showing several passed tests](./images/screenshot-npm-test.PNG)
 
 Once you've tested the application, you can initiative the prompts by entering `node index.js` into the command-line.
 
-![Command-line with node index.js written in it]
-
 You will be given your first question, which is to provide your name. Once you've done this, you'll proceed to answer further prompts, such as what your ID is (must be a number), your email and your office number (must be a number).
 
-![Command-line with prompt asking for the user's name]
+![Command-line with prompt asking for the user's name](./images/screenshot-first-prompt.PNG)
 
-![Command-line with answered prompts, the final prompt asking for the user's office number left unanswered]
+![Command-line with answered prompts, the final prompt asking for the user's office number left unanswered](./images/screenshot-manager-prompts.PNG)
 
 Where prompts ask for details, such as an ID or email address, there are validations in place which will prevent the user from inputting incorrect information.
 
-![Command-line showing prompt asked again after providing incorrect information]
+![Command-line showing prompt asked again after providing incorrect information](./images/screenshot-incorrect-answer.PNG)
 
 Once the user has answered the first round of prompts, they will be asked if they want to add an Engineer or Intern as an employee.
 
-![Command-line with prompt and a list of employee-types to choose from]
+![Command-line with prompt and a list of employee-types to choose from](./images/screenshot-employee-choice-prompt.PNG)
 
 When the user asks for either, they will be presented with similar questions as before. The difference is that there will be a prompt asking for a GitHub username for engineers or the school the intern attended, rather than asking for an office number.
 
-![Command-line with prompt asking for Engineer's GitHub username]
+![Command-line with prompt asking for Engineer's GitHub username](./images/screenshot-engineer-github-prompt.PNG)
 
-![Command-line with prompt asking for Intern's school]
+![Command-line with prompt asking for Intern's school](./images/screenshot-intern-school-prompt.PNG)
 
 When the user finishes answering the prompts for either an engineer or intern, they will be asked if they wish to add another employee or not. If they do, they can enter `y` into the command-line and will then be prompted to ask if they wish to add an engineer or intern again. If they don't, they can enter `n` into the command-line, which will finish the prompts and generate a HTML file.
 
-![Command-line with prompt asking with the user wants to add another employee]
-
-![Command-line with prompt and a list of employee-types to choose from]
-
-![Command-line showing that team profiles have been created]
+![Command-line with prompt asking with the user wants to add another employee](./images/screenshot-employee-choice-prompt-2.PNG)
 
 And there you have it, team profiles have been generated into a HTML file that is responsive and usable.
 
