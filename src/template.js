@@ -3,6 +3,7 @@ const createTeam = (employees) => {
     // Create Manager card using template literals
     const createManagerCard = (manager) => {
         return `
+                <!-- Manager card -->
                 <div class="col-12 col-md-4">
                     <div class="card">
                         <div class="card-body">
@@ -34,6 +35,7 @@ const createTeam = (employees) => {
     // Create Engineer card using template literals
     const createEngineerCard = (engineer) => {
         return `
+                <!-- Engineer card -->
                 <div class="col-12 col-md-4">
                     <div class="card">
                         <div class="card-body">
@@ -65,6 +67,7 @@ const createTeam = (employees) => {
     // Create Intern card using template literals
     const createInternCard = (intern) => {
         return `
+                <!-- Intern card -->
                 <div class="col-12 col-md-4">
                     <div class="card">
                         <div class="card-body">
@@ -156,6 +159,7 @@ module.exports = (employees) => {
     </header>
 
     <main>
+    <!-- Team cards -->
         <div class="container">
             <div class="row">
             ${createTeam(employees)}
